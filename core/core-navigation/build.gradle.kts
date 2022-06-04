@@ -6,6 +6,8 @@ plugins {
 
 dependencies {
 
+    implementation(project(":core:core-feature"))
+
     addNavigationComponentDependencies()
     addDaggerDependencies()
 }

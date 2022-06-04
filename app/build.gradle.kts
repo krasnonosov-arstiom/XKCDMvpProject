@@ -19,6 +19,10 @@ android {
 
 dependencies {
 
+    implementation(project(":core:core-feature"))
+    implementation(project(":core:core-navigation"))
+
     addCommonDependencies()
     addDaggerDependencies()
+    addNavigationComponentDependencies()
 }
