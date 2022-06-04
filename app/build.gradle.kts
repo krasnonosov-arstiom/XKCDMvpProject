@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
 }
 
 android {
@@ -8,15 +9,16 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 }
 
 dependencies {
 
-    implementation(Libraries.coreKtx)
-    implementation(Libraries.appCompat)
-    implementation(Libraries.androidMaterial)
-    implementation(Libraries.constraintLayout)
+    addCommonDependencies()
+    addDaggerDependencies()
 }
