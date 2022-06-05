@@ -13,6 +13,8 @@ android {
 
 dependencies {
 
+    implementation(project(":domain"))
+
     addDaggerDependencies()
     addNetworkDependencies()
     addRoomDependencies()
