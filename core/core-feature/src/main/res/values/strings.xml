@@ -3,4 +3,6 @@
     <string name="favourite_menu_item_title">Favourite</string>
     <string name="search_menu_item_title">Search</string>
     <string name="settings_menu_item_title">Settings</string>
+
+    <string name="standard_error_text">Something went wrong :(</string>
 </resources>
