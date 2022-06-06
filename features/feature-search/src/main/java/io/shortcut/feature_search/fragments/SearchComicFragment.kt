@@ -1,7 +1,10 @@
 package io.shortcut.feature_search.fragments
 
+import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import io.shortcut.core_feature.base.BaseFragment
 import io.shortcut.core_feature.base.BaseViewModel
 import io.shortcut.core_feature.di.AppComponentProvider
@@ -26,5 +29,14 @@ class SearchComicFragment: BaseFragment<FragmentSearchComicBinding, SearchComicV
 
     override fun inject(appComponentProvider: AppComponentProvider) {
         SearchFeatureComponent.create(appComponentProvider).inject(this)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.comicModelLiveData.observe(viewLifecycleOwner) {
+            Glide.with(this)
+                .load(it.img)
+                .into(binding.comicImageView)
+        }
     }
 }

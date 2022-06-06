@@ -10,7 +10,6 @@ import io.shortcut.core_feature.base.BaseViewModel
 import io.shortcut.core_feature.di.AssistedViewModelFactory
 import io.shortcut.domain.interactors.ComicSearchInteractor
 import io.shortcut.domain.models.ComicModel
-import kotlinx.coroutines.launch
 
 class SearchComicViewModel @AssistedInject constructor(
     @Assisted arguments: Bundle,
@@ -21,7 +20,7 @@ class SearchComicViewModel @AssistedInject constructor(
     val comicModelLiveData: LiveData<ComicModel> = _comicModelLiveData
 
     init {
-        launch {
+        launchWithLoading {
             _comicModelLiveData.value = interactor.getTheLastComic()
         }
     }

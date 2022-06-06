@@ -10,9 +10,4 @@
         android:id="@+id/searchFragment"
         android:icon="@drawable/ic_search_24"
         android:title="@string/search_menu_item_title" />
-
-    <item
-        android:id="@+id/settingsFragment"
-        android:icon="@drawable/ic_settings_24"
-        android:title="@string/settings_menu_item_title" />
 </menu>

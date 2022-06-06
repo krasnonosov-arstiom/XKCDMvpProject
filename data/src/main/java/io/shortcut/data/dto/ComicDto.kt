@@ -14,7 +14,7 @@ class ComicDto(
     val title: String,
 
     @Expose
-    @SerializedName("safeTitle")
+    @SerializedName("safe_title")
     val safeTitle: String,
 
     @Expose
