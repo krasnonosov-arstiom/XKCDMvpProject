@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="loading_icon_size">80dp</dimen>
+
+    <integer name="loading_frame_duration">400</integer>
+</resources>

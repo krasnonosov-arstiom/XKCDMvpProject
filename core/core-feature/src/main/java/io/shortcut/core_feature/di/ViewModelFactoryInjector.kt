@@ -4,14 +4,13 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import dagger.Reusable
-import io.shortcut.core_feature.base.BaseViewModel
 import javax.inject.Inject
 import javax.inject.Provider
 import kotlin.reflect.KClass
 
 @Reusable
 class ViewModelFactoryInjector @Inject constructor(
-    private val viewModelFactories: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<AssistedViewModelFactory<out BaseViewModel>>>
+    private val viewModelFactories: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<AssistedViewModelFactory<out ViewModel>>>
 ) {
 
     @Suppress("UNCHECKED_CAST")

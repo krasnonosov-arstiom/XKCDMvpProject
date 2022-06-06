@@ -1,0 +1,19 @@
+package io.shortcut.domain.interactors_impl
+
+import io.shortcut.domain.interactors.ComicSearchInteractor
+import io.shortcut.domain.models.ComicModel
+import io.shortcut.domain.repositories.ComicsApiRepository
+import javax.inject.Inject
+
+class ComicSearchInteractorImpl @Inject constructor(
+    private val comicApiRepository: ComicsApiRepository
+) : ComicSearchInteractor {
+
+    override suspend fun getTheLastComic(): ComicModel {
+        return comicApiRepository.getTheLastComic()
+    }
+
+    override suspend fun getComicWithNumberOf(comicNumber: Long): ComicModel {
+        return comicApiRepository.getComicWithNumberOf(comicNumber)
+    }
+}

@@ -27,7 +27,7 @@ class ComicDto(
 
     @Expose
     @SerializedName("img")
-    val img: ByteArray,
+    val img: String,
 
     @Expose
     @SerializedName("month")
@@ -35,7 +35,7 @@ class ComicDto(
 
     @Expose
     @SerializedName("link")
-    val link: String?,
+    val link: String,
 
     @Expose
     @SerializedName("year")

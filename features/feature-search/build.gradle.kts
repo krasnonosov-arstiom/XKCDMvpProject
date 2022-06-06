@@ -6,5 +6,8 @@ plugins {
 
 dependencies {
 
+    implementation(project(":core:core-feature"))
+    implementation(project(":domain"))
+
     addFeatureDependencies()
 }

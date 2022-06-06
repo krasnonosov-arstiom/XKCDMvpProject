@@ -1,11 +1,10 @@
 package io.shortcut.core_feature.base
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.hadilq.liveevent.LiveEvent
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
 abstract class BaseViewModel : ViewModel(), CoroutineScope {
@@ -20,12 +19,35 @@ abstract class BaseViewModel : ViewModel(), CoroutineScope {
 
     val errorLiveEvent = LiveEvent<Throwable>()
 
+    private val _loadingLiveData = MutableLiveData<Boolean>()
+    val loadingLiveData: LiveData<Boolean> = _loadingLiveData
+
     private fun handleError(throwable: Throwable) {
         errorLiveEvent.value = throwable
+    }
+
+    fun CoroutineScope.launchWithLoading(function: suspend () -> Unit) {
+        val showLoadingJob = launch {
+            delay(DELAY_BEFORE_LOADING)
+            _loadingLiveData.value = true
+        }
+        launch {
+            try {
+                function()
+            } finally {
+                showLoadingJob.cancel()
+                _loadingLiveData.value = false
+            }
+        }
     }
 
     override fun onCleared() {
         supervisorJob.cancel()
         super.onCleared()
+    }
+
+    companion object {
+
+        private const val DELAY_BEFORE_LOADING = 200L
     }
 }

@@ -10,5 +10,5 @@ interface XKCDApiService {
     suspend fun getTheLastComic(): ComicDto
 
     @GET("{comicNum}/info.0.json")
-    suspend fun getComicWithNumberOf(@Path("comicNum") comicNum: Long): ComicDto
+    suspend fun getComicWithNumber(@Path("comicNum") comicNum: Long): ComicDto
 }

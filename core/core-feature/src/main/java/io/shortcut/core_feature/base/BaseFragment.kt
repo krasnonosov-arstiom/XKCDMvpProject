@@ -15,6 +15,7 @@ import io.shortcut.core_feature.di.AppComponentProvider
 import io.shortcut.core_feature.di.AppComponentProviderHolder
 import io.shortcut.core_feature.di.NavigationRouterProvider
 import io.shortcut.core_feature.di.ViewModelFactoryInjector
+import io.shortcut.core_feature.layout.IProgressLayout
 import io.shortcut.core_feature.router.Router
 import kotlin.reflect.KClass
 
@@ -41,6 +42,8 @@ abstract class BaseFragment<B : ViewBinding, VM : BaseViewModel> : Fragment() {
         get() = checkNotNull(_router) {
             "Router hasn't been initialized"
         }
+
+    private var isProgressLayout = false
 
     abstract fun initBinding(inflater: LayoutInflater, container: ViewGroup?): B
 
@@ -69,6 +72,7 @@ abstract class BaseFragment<B : ViewBinding, VM : BaseViewModel> : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = initBinding(inflater, container)
+        isProgressLayout = binding.root is IProgressLayout
         return binding.root
     }
 
@@ -81,6 +85,9 @@ abstract class BaseFragment<B : ViewBinding, VM : BaseViewModel> : Fragment() {
                 it.localizedMessage ?: getString(R.string.standard_error_text),
                 Snackbar.LENGTH_LONG
             ).show()
+        }
+        viewModel.loadingLiveData.observe(viewLifecycleOwner) {
+            if (isProgressLayout) (binding.root as IProgressLayout).isProgressVisible = it
         }
     }
 

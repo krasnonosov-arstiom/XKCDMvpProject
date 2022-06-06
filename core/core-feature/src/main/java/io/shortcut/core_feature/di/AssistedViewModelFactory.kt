@@ -1,9 +1,9 @@
 package io.shortcut.core_feature.di
 
 import android.os.Bundle
-import io.shortcut.core_feature.base.BaseViewModel
+import androidx.lifecycle.ViewModel
 
-interface AssistedViewModelFactory<T: BaseViewModel> {
+interface AssistedViewModelFactory<T: ViewModel> {
 
     fun create(arguments: Bundle): T
 }
