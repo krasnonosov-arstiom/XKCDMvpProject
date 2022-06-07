@@ -6,28 +6,109 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingHorizontal="@dimen/default_margin"
+    android:paddingBottom="@dimen/default_margin"
     tools:context="io.shortcut.feature_search.fragments.SearchComicFragment">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/filledTextField"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/search_hint"
-        app:boxBackgroundColor="@android:color/transparent">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/search_request_edit_text"
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/previous_comic_button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="number"
-            android:maxLength="5"
-            android:gravity="center"/>
+            android:background="@drawable/background_button"
+            android:text="@string/previous_button_text"
+            android:textAppearance="@style/ButtonTextStyle"
+            app:layout_constraintBottom_toBottomOf="@+id/search_request_layout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/search_request_layout" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/search_request_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/small_margin"
+            android:hint="@string/search_hint"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:layout_constraintEnd_toStartOf="@+id/next_comic_button"
+            app:layout_constraintStart_toEndOf="@+id/previous_comic_button"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/comic_image_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/default_margin" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/search_request_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:maxLength="5" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/next_comic_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_button"
+            android:text="@string/next_button_text"
+            android:textAppearance="@style/ButtonTextStyle"
+            app:layout_constraintBottom_toBottomOf="@+id/search_request_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/search_request_layout" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/random_comic_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
+            android:background="@drawable/background_button"
+            android:text="@string/random_button_text"
+            android:textAppearance="@style/ButtonTextStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_request_layout" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/comic_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:gravity="center"
+            android:textAppearance="@style/TitleTextStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/random_comic_button" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/comic_image_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:adjustViewBounds="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/comic_title" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/comic_alt_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:gravity="center"
+            android:textAppearance="@style/DefaultTextStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comic_image_view" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/comic_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:gravity="end"
+            android:textAppearance="@style/DefaultTextStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comic_alt_text_view" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </io.shortcut.core_feature.layout.ProgressScrollLinearLayout>

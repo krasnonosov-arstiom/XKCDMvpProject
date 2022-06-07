@@ -4,7 +4,13 @@
     <string name="search_menu_item_title">Search</string>
     <string name="settings_menu_item_title">Settings</string>
 
+    <string name="comic_not_found_error_text">Unfortunately, we haven\'t got any more comics</string>
     <string name="standard_error_text">Something went wrong :(</string>
 
+    <!--Search comic-->
     <string name="search_hint">Input your search request here</string>
+    <string name="previous_button_text">&lt;Prev</string>
+    <string name="next_button_text">Next></string>
+    <string name="random_button_text">Random</string>
+    <string name="date_placeholder">%1$s.%2$s.%3$s</string>
 </resources>

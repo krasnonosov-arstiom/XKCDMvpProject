@@ -7,4 +7,6 @@ interface ComicSearchInteractor {
     suspend fun getTheLastComic(): ComicModel
 
     suspend fun getComicWithNumberOf(comicNumber: Long): ComicModel
+
+    suspend fun getRandomComic(): ComicModel
 }

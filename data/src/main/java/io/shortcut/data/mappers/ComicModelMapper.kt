@@ -8,8 +8,20 @@ class ComicModelMapper(dto: ComicDto) {
     val model by lazy {
         dto.run {
             ComicModel(
-                comicNum, title, safeTitle, transcript, alt, img, month, link, year, news, day
+                comicNum,
+                title,
+                safeTitle,
+                nullIfEmpty(transcript),
+                alt,
+                img,
+                month,
+                link,
+                year,
+                nullIfEmpty(news),
+                day
             )
         }
     }
+
+    private fun nullIfEmpty(value: String): String? = value.ifEmpty { null }
 }
