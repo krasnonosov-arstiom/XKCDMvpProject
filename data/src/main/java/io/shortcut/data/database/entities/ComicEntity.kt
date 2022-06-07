@@ -2,8 +2,9 @@ package io.shortcut.data.database.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import io.shortcut.data.database.utils.COMIC_ENTITY_TABLE_NAME
 
-@Entity
+@Entity(tableName = COMIC_ENTITY_TABLE_NAME)
 class ComicEntity(
 
     @PrimaryKey val comicNum: Long,
@@ -15,6 +16,6 @@ class ComicEntity(
     val month: String,
     val link: String?,
     val year: String,
-    val news: String,
+    val news: String?,
     val day: String
 )

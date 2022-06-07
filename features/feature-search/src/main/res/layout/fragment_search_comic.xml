@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingHorizontal="@dimen/default_margin"
-    android:paddingBottom="@dimen/default_margin"
     tools:context="io.shortcut.feature_search.fragments.SearchComicFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -110,5 +109,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/comic_alt_text_view" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/save_to_favourites_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/default_margin"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:background="@drawable/background_button"
+            android:text="@string/save_to_favourites_button_text"
+            android:textAppearance="@style/ButtonTextStyle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comic_date" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </io.shortcut.core_feature.layout.ProgressScrollLinearLayout>

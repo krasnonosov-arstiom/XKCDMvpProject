@@ -1,7 +1,7 @@
 package io.shortcut.data.repositories_impl
 
 import io.shortcut.data.api.XKCDApiService
-import io.shortcut.data.mappers.ComicModelMapper
+import io.shortcut.data.mappers.ComicDtoToModelMapper
 import io.shortcut.domain.models.ComicModel
 import io.shortcut.domain.repositories.ComicsApiRepository
 import javax.inject.Inject
@@ -11,10 +11,10 @@ class ComicsApiRepositoryImpl @Inject constructor(
 ): ComicsApiRepository {
 
     override suspend fun getTheLastComic(): ComicModel {
-        return ComicModelMapper(apiService.getTheLastComic()).model
+        return ComicDtoToModelMapper(apiService.getTheLastComic()).model
     }
 
     override suspend fun getComicWithNumberOf(comicNumber: Long): ComicModel {
-        return ComicModelMapper(apiService.getComicWithNumber(comicNumber)).model
+        return ComicDtoToModelMapper(apiService.getComicWithNumber(comicNumber)).model
     }
 }

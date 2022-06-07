@@ -41,6 +41,12 @@ class SearchComicViewModel @AssistedInject constructor(
         getNewComicWithSetCurrentNumber { interactor.getRandomComic() }
     }
 
+    fun saveToFavourites() {
+        launchWithLoading {
+            comicModelLiveData.value?.let { interactor.saveComicToFavourites(it) }
+        }
+    }
+
     private fun getNewComicWithSetCurrentNumber(comicFunction: suspend () -> ComicModel) {
         launchWithLoading {
             val comicModel = comicFunction()

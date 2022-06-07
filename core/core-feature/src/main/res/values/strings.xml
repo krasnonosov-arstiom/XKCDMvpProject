@@ -13,4 +13,8 @@
     <string name="next_button_text">Next></string>
     <string name="random_button_text">Random</string>
     <string name="date_placeholder">%1$s.%2$s.%3$s</string>
+    <string name="save_to_favourites_button_text">To favourites</string>
+
+    <!--Favourite-->
+    <string name="no_favourite_comics">You don\'t have favourite comics</string>
 </resources>

@@ -9,4 +9,6 @@ interface ComicSearchInteractor {
     suspend fun getComicWithNumberOf(comicNumber: Long): ComicModel
 
     suspend fun getRandomComic(): ComicModel
+
+    suspend fun saveComicToFavourites(model: ComicModel)
 }

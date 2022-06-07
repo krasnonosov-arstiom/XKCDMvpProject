@@ -55,6 +55,7 @@ class SearchComicFragment : BaseFragment<FragmentSearchComicBinding, SearchComic
             }
             false
         }
+        binding.saveToFavouritesButton.setOnClickListener { viewModel.saveToFavourites() }
     }
 
     private fun populateComicForm(model: ComicModel) {

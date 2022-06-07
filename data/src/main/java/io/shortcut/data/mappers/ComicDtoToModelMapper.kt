@@ -3,7 +3,7 @@ package io.shortcut.data.mappers
 import io.shortcut.data.dto.ComicDto
 import io.shortcut.domain.models.ComicModel
 
-class ComicModelMapper(dto: ComicDto) {
+class ComicDtoToModelMapper(dto: ComicDto) {
 
     val model by lazy {
         dto.run {
