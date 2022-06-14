@@ -12,4 +12,5 @@ dependencies {
     addDaggerDependencies()
     addCoroutinesDependencies()
     implementation(Libraries.liveEvents)
+    implementation(Libraries.lifecycleViewModel)
 }

@@ -25,6 +25,8 @@ object Versions {
     const val room = "2.4.2"
 
     const val liveEvents = "1.3.0"
+
+    const val lifecycleViewModel = "2.4.1"
 }
 
 object AndroidSdk {
@@ -45,7 +47,6 @@ object Libraries {
     const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
     const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
     const val androidMaterial = "com.google.android.material:material:${Versions.androidMaterial}"
-    const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
 
     const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
     const val kaptDaggerCompiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
@@ -69,6 +70,8 @@ object Libraries {
     const val roomKtx = "androidx.room:room-ktx:${Versions.room}"
 
     const val liveEvents = "com.github.hadilq:live-event:${Versions.liveEvents}"
+
+    const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleViewModel}"
 }
 
 fun DependencyHandler.addCommonDependencies() {

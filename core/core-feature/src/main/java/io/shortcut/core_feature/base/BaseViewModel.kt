@@ -3,19 +3,21 @@ package io.shortcut.core_feature.base
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.hadilq.liveevent.LiveEvent
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 abstract class BaseViewModel : ViewModel(), CoroutineScope {
 
-    private val supervisorJob = SupervisorJob()
     private val errorHandler = CoroutineExceptionHandler { _, throwable ->
         handleError(throwable)
     }
 
-    override val coroutineContext: CoroutineContext =
-        supervisorJob + errorHandler + Dispatchers.Main
+    override val coroutineContext: CoroutineContext = errorHandler
 
     val errorLiveEvent = LiveEvent<Throwable>()
 
@@ -26,12 +28,12 @@ abstract class BaseViewModel : ViewModel(), CoroutineScope {
         errorLiveEvent.value = throwable
     }
 
-    fun CoroutineScope.launchWithLoading(function: suspend () -> Unit) {
-        val showLoadingJob = launch {
+    fun launchWithLoading(function: suspend () -> Unit) {
+        val showLoadingJob = viewModelScope.launch {
             delay(DELAY_BEFORE_LOADING)
             _loadingLiveData.value = true
         }
-        launch {
+        viewModelScope.launch {
             try {
                 function()
             } finally {
@@ -39,11 +41,6 @@ abstract class BaseViewModel : ViewModel(), CoroutineScope {
                 _loadingLiveData.value = false
             }
         }
-    }
-
-    override fun onCleared() {
-        supervisorJob.cancel()
-        super.onCleared()
     }
 
     companion object {
