@@ -11,13 +11,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseViewModel : ViewModel(), CoroutineScope {
-
-    private val errorHandler = CoroutineExceptionHandler { _, throwable ->
-        handleError(throwable)
-    }
-
-    override val coroutineContext: CoroutineContext = errorHandler
+abstract class BaseViewModel : ViewModel() {
 
     val errorLiveEvent = LiveEvent<Throwable>()
 
@@ -36,6 +30,8 @@ abstract class BaseViewModel : ViewModel(), CoroutineScope {
         viewModelScope.launch {
             try {
                 function()
+            } catch (t: Throwable) {
+                handleError(t)
             } finally {
                 showLoadingJob.cancel()
                 _loadingLiveData.value = false
